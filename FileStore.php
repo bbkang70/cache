@@ -92,7 +92,7 @@ class FileStore implements Store
         $raw = $this->getPayload($key);
 
         return tap(((int) $raw['data']) + $value, function ($newValue) use ($key, $raw) {
-            $this->put($key, $newValue, $raw['time']);
+            $this->put($key, $newValue, (int) $raw['time']);
         });
     }
 
